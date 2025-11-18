@@ -6,23 +6,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #86ea6d;
-            color: #ffffff;
-            font-family: Impact, sans-serif;
+            background-color: #f7e9f3; /* Rosa pastel muy claro */
+            color: #5c5c5c; /* Gris suave para el texto principal */
+            font-family: 'Arial', sans-serif; /* Un tipo de letra más legible */
             padding: 2rem;
         }
-        h1 {
+        h1, h3, h4 {
             text-align: center;
             margin-bottom: 2rem;
             font-weight: bold;
+            color: #8a7ba1; /* Morado pastel */
         }
         .upload-box {
             text-align: center;
             margin-bottom: 2rem;
+            display: flex; /* Usar flexbox para centrar contenido */
+            flex-direction: column; /* Apilar elementos verticalmente */
+            align-items: center; /* Centrar horizontalmente */
+            gap: 1rem; /* Espacio entre el input y el botón */
+        }
+        .upload-box .form-control {
+            max-width: 400px;
+            border-color: #b3e0e0; /* Borde azul claro pastel */
+        }
+        .upload-box .btn {
+            background-color: #a4d8b2; /* Verde pastel */
+            border-color: #a4d8b2;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .upload-box .btn:hover {
+            background-color: #8ac09b; /* Verde pastel un poco más oscuro al pasar el mouse */
+            border-color: #8ac09b;
         }
         .graphs {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado para pantallas más pequeñas */
             gap: 1.5rem;
             justify-items: center;
         }
@@ -30,11 +52,39 @@
             width: 100%;
             max-width: 600px;
             border-radius: 10px;
-            background: #161b22;
+            background: #ffffff; /* Fondo blanco para las imágenes */
             padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
         }
         .table-container {
             margin-top: 2rem;
+            background-color: #ffffff; /* Fondo blanco para la tabla */
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .table-responsive {
+            max-height: 400px; /* Limitar altura de la tabla si es muy larga */
+            overflow-y: auto;
+            border-radius: 8px;
+        }
+        .table {
+            color: #5c5c5c; /* Color de texto para la tabla */
+        }
+        .table thead {
+            background-color: #cfe2f3; /* Azul cielo pastel para encabezados */
+            color: #333333;
+        }
+        .table tbody tr:nth-child(even) {
+            background-color: #f0f8ff; /* Azul muy claro para filas pares */
+        }
+        .alert-warning {
+            background-color: #fff3cd; /* Amarillo pastel para alertas */
+            border-color: #ffeeba;
+            color: #664d03;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
         }
     </style>
 </head>
@@ -44,7 +94,7 @@
     <div class="upload-box">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input class="form-control form-control-lg" type="file" name="file" accept=".arff" style="max-width:400px;display:inline-block;">
+            <input class="form-control form-control-lg" type="file" name="file" accept=".arff">
             <button class="btn btn-primary btn-lg mt-3">Subir y procesar</button>
         </form>
     </div>
